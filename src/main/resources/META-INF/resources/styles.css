@@ -1,29 +1,496 @@
-/* Add your styles here */
+/* Imported from Figma — AcmeCorp design system */
 
-.app-logo {
-    border-radius: min(40%, var(--vaadin-radius-m));
-    margin-inline-start: var(--vaadin-padding-inline-container);
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap");
+
+html {
+    /* Typography */
+    --lumo-font-family: "Noto Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* Primary (teal) */
+    --lumo-primary-color: #48ada3;
+    --lumo-primary-color-50pct: rgba(72, 173, 163, 0.5);
+    --lumo-primary-color-10pct: #9bd4b333;
+    --lumo-primary-text-color: #4b958e;
+    --lumo-primary-contrast-color: #ffffff;
+
+    /* Text colors */
+    --lumo-header-text-color: #192a34;
+    --lumo-body-text-color: #192d39f0;
+    --lumo-secondary-text-color: #1b3341b0;
+    --lumo-tertiary-text-color: #1c384a85;
+
+    /* Contrast scale */
+    --lumo-base-color: #ffffff;
+    --lumo-contrast-5pct: #1949670f;
+    --lumo-contrast-10pct: #1a45601f;
+    --lumo-contrast-20pct: #1c425a29;
+    --lumo-contrast-50pct: #c9e6f880;
+    --lumo-contrast-60pct: #1c354599;
+    --lumo-contrast-80pct: #1a303dd4;
+
+    /* Status colors */
+    --lumo-error-text-color: #d93930;
+    --lumo-error-color-10pct: #da59521a;
+    --lumo-success-text-color: #49760a;
+    --lumo-success-color-10pct: rgba(73, 118, 10, 0.1);
+
+    /* Shape */
+    --lumo-border-radius-m: 8px;
+    --lumo-border-radius-l: 12px;
+
+    /* Shadow */
+    --lumo-box-shadow-s: 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+
+    /* Input field */
+    --vaadin-input-field-height: 48px;
+    --vaadin-input-field-background: #ffffff;
+    --vaadin-input-field-border-color: #1c425a29;
+    --vaadin-input-field-border-width: 1px;
+
+    /* User colors */
+    --vaadin-user-color-0: #b77c60;
 }
 
-.app-name {
+/* Side navigation panel — dark theme inside drawer */
+vaadin-app-layout::part(drawer) {
+    background: #395567;
+    color: #ffffff;
+    --lumo-body-text-color: rgba(255, 255, 255, 0.9);
+    --lumo-secondary-text-color: rgba(255, 255, 255, 0.7);
+    --lumo-tertiary-text-color: rgba(255, 255, 255, 0.55);
+    --lumo-header-text-color: #ffffff;
+    --lumo-contrast-5pct: rgba(255, 255, 255, 0.06);
+    --lumo-contrast-10pct: rgba(255, 255, 255, 0.12);
+    --lumo-contrast-20pct: rgba(255, 255, 255, 0.18);
+    --lumo-primary-color-10pct: rgba(255, 255, 255, 0.16);
+    --lumo-primary-text-color: #ffffff;
+    border-right: none;
+}
+
+vaadin-app-layout::part(drawer) vaadin-side-nav-item::part(item) {
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: var(--lumo-border-radius-m);
+}
+
+vaadin-app-layout::part(drawer) vaadin-side-nav-item[active]::part(item) {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+vaadin-app-layout::part(drawer) vaadin-side-nav-item::part(item):hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Drawer header — ACME logo block */
+.acme-logo-block {
+    padding: 24px 24px 16px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: var(--lumo-font-size-xl);
+    letter-spacing: 0.04em;
+}
+
+.acme-logo-block .acme-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.acme-logo-block .acme-logo-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #6ab4ac, #48ada3);
+    display: inline-block;
+    position: relative;
+}
+
+.acme-logo-block .acme-logo-mark::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+}
+
+/* Nav group titles */
+.nav-group-title {
+    font-size: var(--lumo-font-size-xxs);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 16px 12px 6px;
+    margin: 0;
     font-weight: 600;
-    font-size: var(--lumo-font-size-l);
 }
 
-.app-footer {
-    color: var(--vaadin-text-color-secondary);
-    font-size: var(--lumo-font-size-s);
+/* User footer button */
+.user-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    margin: 8px;
+    border-radius: var(--lumo-border-radius-m);
+    color: #ffffff;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font: inherit;
 }
 
-/* TODO: This is only for demo purposes. You can delete it. */
-vaadin-side-nav:has(vaadin-side-nav-item:only-child)::after {
-    display: block;
-    content: "More menu items will appear here when you add more views.";
+.user-button:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.user-button .user-name {
+    flex: 1;
+    text-align: start;
     font-size: var(--lumo-font-size-s);
-    color: var(--vaadin-text-color-secondary);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.user-button vaadin-icon {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* View header / page titles */
+.view-title {
+    font-size: var(--lumo-font-size-xl);
+    font-weight: 600;
+    color: var(--lumo-header-text-color);
+    margin: 0;
+    line-height: 1.25;
+}
+
+/* KPI block */
+.kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 200px;
+}
+
+.kpi .kpi-label {
+    font-size: var(--lumo-font-size-s);
+    color: var(--lumo-secondary-text-color);
+}
+
+.kpi .kpi-value {
+    font-size: var(--lumo-font-size-xxl);
+    font-weight: 600;
+    color: var(--lumo-header-text-color);
+    line-height: 1.25;
+}
+
+.kpi-divider {
+    width: 1px;
+    align-self: stretch;
+    background: var(--lumo-contrast-10pct);
+    margin: 0 24px;
+}
+
+.toolbar {
+    padding: 24px;
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+    background: var(--lumo-base-color);
+    align-items: center;
+    gap: 0;
+}
+
+.toolbar .kpis {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.view-header {
+    padding: 16px 24px;
+    background: var(--lumo-base-color);
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+    min-height: 60px;
     box-sizing: border-box;
-    padding: 1em;
-    max-width: 14em;
-    min-width: 100%;
-    white-space: normal;
+    display: flex;
+    align-items: center;
+}
+
+/* Filters panel */
+.filters-panel {
+    width: 300px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.filters-panel h3 {
+    margin: 0 0 16px;
+    font-size: var(--lumo-font-size-l);
+    font-weight: 600;
+    color: var(--lumo-header-text-color);
+}
+
+/* Card grid (Reports) */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 0 24px 24px 0;
+}
+
+.card {
+    background: var(--lumo-base-color);
+    border-radius: var(--lumo-border-radius-l);
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(25, 42, 52, 0.06), 0 1px 1px rgba(25, 42, 52, 0.04);
+    border: 1px solid var(--lumo-contrast-5pct);
+    display: flex;
+    flex-direction: column;
+}
+
+.card .card-media {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background: var(--lumo-contrast-10pct);
+    display: block;
+}
+
+.card .card-content {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.card .card-title {
+    font-size: var(--lumo-font-size-m);
+    font-weight: 600;
+    color: var(--lumo-header-text-color);
+    margin: 0 0 4px;
+    line-height: 1.25;
+}
+
+.card .card-subtitle {
+    font-size: var(--lumo-font-size-s);
+    color: var(--lumo-secondary-text-color);
+    margin: 0;
+    line-height: 1.25;
+}
+
+/* Layout helpers */
+.view-content {
+    padding: 0;
+    background: var(--lumo-base-color);
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.view-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.cards-scroll {
+    flex: 1;
+    overflow: auto;
+    padding-top: 0;
+}
+
+/* Employee list specific */
+.tabs-bar {
+    padding: 0 24px;
+    background: var(--lumo-base-color);
+    border-bottom: 1px solid var(--lumo-contrast-10pct);
+}
+
+.master-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+    overflow: hidden;
+}
+
+.master-side {
+    border-right: 1px solid var(--lumo-contrast-10pct);
+    overflow: hidden;
+    display: flex;
+}
+
+.master-side vaadin-grid {
+    flex: 1;
+}
+
+.detail-side {
+    padding: 0;
+    overflow: auto;
+    background: var(--lumo-base-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-form-header {
+    padding: 32px 24px 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.employee-form-header h2 {
+    margin: 0;
+    font-size: var(--lumo-font-size-xxl);
+    font-weight: 600;
+    color: var(--lumo-header-text-color);
+    line-height: 1.2;
+}
+
+.employee-form-header .service-time {
+    color: var(--lumo-secondary-text-color);
+    font-size: var(--lumo-font-size-m);
+    margin: 4px 0 0;
+}
+
+.employee-form-section {
+    padding: 0 24px;
+}
+
+.employee-form-section h3 {
+    margin: 16px 0 12px;
+    font-size: var(--lumo-font-size-l);
+    font-weight: 600;
+    color: var(--lumo-header-text-color);
+}
+
+.form-footer {
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid var(--lumo-contrast-10pct);
+    margin-top: auto;
+    background: var(--lumo-base-color);
+}
+
+.form-footer .right-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Buttons - primary teal */
+vaadin-button[theme~="primary"] {
+    background: var(--lumo-primary-color);
+    color: #ffffff;
+    border-radius: var(--lumo-border-radius-m);
+}
+
+/* Status badge colors */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: var(--lumo-font-size-xs);
+    font-weight: 500;
+    background: var(--lumo-success-color-10pct);
+    color: var(--lumo-success-text-color);
+}
+
+.status-badge.inactive {
+    background: var(--lumo-error-color-10pct);
+    color: var(--lumo-error-text-color);
+}
+
+.status-badge.unrated {
+    background: var(--lumo-contrast-10pct);
+    color: var(--lumo-secondary-text-color);
+}
+
+/* Hide the demo placeholder note */
+vaadin-side-nav:has(vaadin-side-nav-item:only-child)::after {
+    display: none;
+}
+
+/* Highlight selected row in the Employee grid */
+vaadin-grid::part(selected-row-cell),
+vaadin-grid::part(selected-row-first-column-cell),
+vaadin-grid::part(selected-row-last-column-cell) {
+    background-color: var(--lumo-primary-color-10pct);
+}
+
+vaadin-grid::part(row-selected-row-cell),
+vaadin-grid::part(row-selected-row-first-column-cell),
+vaadin-grid::part(row-selected-row-last-column-cell) {
+    background-color: var(--lumo-primary-color-10pct);
+}
+
+/* Multi-select combo box chips should show inline */
+vaadin-multi-select-combo-box::part(chip) {
+    background: var(--lumo-contrast-10pct);
+    color: var(--lumo-body-text-color);
+}
+
+/* Grid styling tweaks */
+vaadin-grid {
+    --vaadin-grid-cell-padding-inline: 12px;
+    border: none;
+}
+
+vaadin-grid::part(header-cell) {
+    color: var(--lumo-secondary-text-color);
+    font-weight: 500;
+    font-size: var(--lumo-font-size-s);
+    background: var(--lumo-base-color);
+}
+
+/* Status badges in grid */
+.status-badge {
+    padding: 2px 8px;
+    font-size: var(--lumo-font-size-xs);
+}
+
+/* Tabs styling — make active underline use primary color */
+vaadin-tabs vaadin-tab[selected] {
+    color: var(--lumo-primary-text-color);
+}
+
+/* Make page title in view-header larger like Figma */
+.view-header .view-title {
+    font-size: var(--lumo-font-size-xl);
+    font-weight: 600;
+}
+
+/* Form field label tweak */
+vaadin-text-field::part(label),
+vaadin-combo-box::part(label),
+vaadin-date-picker::part(label),
+vaadin-multi-select-combo-box::part(label),
+vaadin-radio-group::part(label) {
+    font-size: var(--lumo-font-size-s);
+    font-weight: 500;
+    color: var(--lumo-body-text-color);
+}
+
+/* Employee form spacing */
+.employee-form-section > vaadin-horizontal-layout {
+    width: 100%;
+}
+
+/* Filter panel - ensure it has its own border */
+.filters-panel {
+    border-right: 1px solid var(--lumo-contrast-10pct);
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+/* Hide Vaadin dev-mode banner / dev-tools inside screenshots */
+vaadin-dev-tools,
+copilot-main,
+vaadin-dev-tools-mode-banner {
+    display: none !important;
 }
